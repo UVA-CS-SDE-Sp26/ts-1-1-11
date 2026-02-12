@@ -1,12 +1,17 @@
 /**
  * Commmand Line Utility
  */
+import java.lang.*;
 
 public class TopSecret {
 
-    public static void main(String[] args) {
+    static void main(String[] args) {
         TopSecret cli = new TopSecret();
-        cli.run(args);
+        try{
+            cli.run(args);}
+        catch(RuntimeException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     /**
@@ -20,18 +25,18 @@ public class TopSecret {
         // one argument displays a specific file
         else if (args.length == 1) {
             if (!args[0].matches("\\d{2}")) {
-                throw new Error("Error: File number must be in two-digit format.");}
+                throw new RuntimeException("Error: File number must be in two-digit format.");}
             displayFileContent(args[0], null);
         }
         // two arguments for custom cipher key
         else if (args.length == 2) {
             if (!args[0].matches("\\d{2}")) {
-                throw new Error("Error: File number must be in two-digit format.");}
+                throw new RuntimeException("Error: File number must be in two-digit format.");}
             displayFileContent(args[0], args[1]);
         }
         // handle unexpected input
         else {
-            throw new Error("Too many Arguments. Usage: java TopSecret [fileNumber] [optionalKey]");
+            throw new RuntimeException("Too many Arguments. Usage: java TopSecret [fileNumber] [optionalKey]");
         }
     }
 
