@@ -1,0 +1,10 @@
+Chris Dougherty (A)
+2/11/2026
+
+This program is executed from the command line using this structure:
+    java TopSecret [fileNumber] [optionalKey]
+
+Run the program with no arguments to list all available files
+Run the program with one argument to display the content of a file (file number must be formated as 01, 02, ...)
+Run the program with two arguments to specify an alternate cipher key to be used when displaying the content
+
