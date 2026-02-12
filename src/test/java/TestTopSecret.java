@@ -26,18 +26,18 @@ public class TestTopSecret {
     @Test
     public void testThreeArguments() {
         TopSecret cli = new TopSecret();
-        assertThrows(Error.class, () -> cli.run(new String[]{"01", "customKey.txt", "tooMany"}));
+        assertThrows(RuntimeException.class, () -> cli.run(new String[]{"01", "customKey.txt", "tooMany"}));
     }
 
     @Test
     public void testOneArgumentsSingleDigit() {
         TopSecret cli = new TopSecret();
-        assertThrows(Error.class, () -> cli.run(new String[]{"1"}));
+        assertThrows(RuntimeException.class, () -> cli.run(new String[]{"1"}));
     }
 
     @Test
     public void testOneArgumentsThreeDigits() {
         TopSecret cli = new TopSecret();
-        assertThrows(Error.class, () -> cli.run(new String[]{"011"}));
+        assertThrows(RuntimeException.class, () -> cli.run(new String[]{"011"}));
     }
 }

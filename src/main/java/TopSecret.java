@@ -21,23 +21,24 @@ public class TopSecret {
         // no arguments lists available files
         if (args.length == 0) {
             displayFileList();
+            return;
         }
         // one argument displays a specific file
-        else if (args.length == 1) {
+        if (args.length == 1) {
             if (!args[0].matches("\\d{2}")) {
                 throw new RuntimeException("Error: File number must be in two-digit format.");}
             displayFileContent(args[0], null);
+            return;
         }
         // two arguments for custom cipher key
-        else if (args.length == 2) {
+        if (args.length == 2) {
             if (!args[0].matches("\\d{2}")) {
                 throw new RuntimeException("Error: File number must be in two-digit format.");}
             displayFileContent(args[0], args[1]);
+            return;
         }
         // handle unexpected input
-        else {
-            throw new RuntimeException("Too many Arguments. Usage: java TopSecret [fileNumber] [optionalKey]");
-        }
+        throw new RuntimeException("Too many Arguments. Usage: java TopSecret [fileNumber] [optionalKey]");
     }
 
     private void displayFileList() {
