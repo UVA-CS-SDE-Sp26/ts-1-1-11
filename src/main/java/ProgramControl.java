@@ -1,22 +1,17 @@
-
 import java.util.ArrayList;
-
 
 public class ProgramControl {
 
-    // commented out until parts are added
-    // private FileHandler fileHandler;
-    // private Cipher cipher;
+    private FileHandler fileHandler;
+    private CipherHandler cipher;
     private ArrayList<String> availableFiles;
 
     // builds other objects
     public ProgramControl() {
-         /*
         availableFiles = fileHandler.getAvailableFiles();
         if (availableFiles == null) {
             availableFiles = new ArrayList<>();
         }
-        */
     }
 
     // main program logic
@@ -60,23 +55,20 @@ public class ProgramControl {
         }
 
         String filename = availableFiles.get(index - 1);
-        /*
         ArrayList<String> content =
-                fileHandler.getAvailableContent(filename);
+                fileHandler.getAvailableFiles();
 
         if (content == null) {
             throw new RuntimeException("Error: File not found.");
         }
 
         if (cipher != null && keyPath != null) {
-            boolean loaded = cipher.loadKey(keyPath);
-            if (!loaded || !cipher.validateKey()) {
+            cipher.loadKey(keyPath);
+            if (!cipher.validateKey()) {
                 throw new RuntimeException("Error: Invalid cipher key.");
             }
             content = cipher.decipher(content);
         }
         return content;
-         */
-        return null;
     }
 }

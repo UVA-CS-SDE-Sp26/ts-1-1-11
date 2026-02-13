@@ -5,7 +5,7 @@ import java.lang.*;
 
 public class TopSecret {
 
-    static void main(String[] args) {
+    public static void main(String[] args) {
         TopSecret cli = new TopSecret();
         try{
             cli.run(args);}

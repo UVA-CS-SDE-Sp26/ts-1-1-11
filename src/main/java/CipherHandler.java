@@ -16,7 +16,7 @@ public class CipherHandler {
         }
     }
 
-    private void loadKey(String keyFilePath) {
+    public void loadKey(String keyFilePath) {
         try {
             List<String> lines = Files.readAllLines(Paths.get(keyFilePath));
 
@@ -32,7 +32,7 @@ public class CipherHandler {
         }
     }
 
-    private boolean validateKey() {
+    public boolean validateKey() {
 
         if (realChar == null || cipherChar == null)
             return false;
