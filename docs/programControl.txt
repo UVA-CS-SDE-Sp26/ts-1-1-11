@@ -1,0 +1,12 @@
+Katherine Craig (C)
+2/12/2026
+
+ProgramControl
+
+---------------------
+
+ProgramControl() - constructor -> builds other objects
+
+PrintFiles() -> String -> returns string list of available files
+
+PullFile(String fileId, String keyPath) -> String -> returns deciphered file contents
