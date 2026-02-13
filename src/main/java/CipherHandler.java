@@ -6,9 +6,11 @@ import java.util.List;
 public class CipherHandler {
     private String realChar;
     private String cipherChar;
+    private FileHandler fileHandler;
 
 
     public CipherHandler(String keyFilePath) {
+        fileHandler = new FileHandler();
         loadKey(keyFilePath);
 
         if (!validateKey()) {
@@ -17,19 +19,16 @@ public class CipherHandler {
     }
 
     public void loadKey(String keyFilePath) {
-        try {
-            List<String> lines = Files.readAllLines(Paths.get(keyFilePath));
 
-            if (lines.size() != 2) {
-                throw new RuntimeException("Key file must contain exactly 2 lines");
-            }
-
-            realChar = lines.get(0).trim();
-            cipherChar = lines.get(1).trim();
-
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to read key file");
+        List<String> lines = fileHandler.getKeyContents(keyFilePath);
+        if (lines.size() != 2) {
+            throw new RuntimeException("Key file must contain exactly 2 lines");
         }
+
+        realChar = lines.get(0).trim();
+        cipherChar = lines.get(1).trim();
+
+
     }
 
     public boolean validateKey() {
@@ -84,3 +83,4 @@ public class CipherHandler {
 
 
 }
+
