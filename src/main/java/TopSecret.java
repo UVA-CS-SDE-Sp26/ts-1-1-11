@@ -1,5 +1,5 @@
 /**
- * Commmand Line Utility
+ * Command Line Utility
  */
 import java.lang.*;
 

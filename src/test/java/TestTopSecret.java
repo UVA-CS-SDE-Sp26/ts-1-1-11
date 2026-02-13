@@ -40,4 +40,22 @@ public class TestTopSecret {
         TopSecret cli = new TopSecret();
         assertThrows(RuntimeException.class, () -> cli.run(new String[]{"011"}));
     }
+
+    @Test
+    public void testOneArgumentsNegativeNumber() {
+        TopSecret cli = new TopSecret();
+        assertThrows(RuntimeException.class, () -> cli.run(new String[]{"-5"}));
+    }
+
+    @Test
+    public void testTwoArgumentsNegativeNumber() {
+        TopSecret cli = new TopSecret();
+        assertThrows(RuntimeException.class, () -> cli.run(new String[]{"-5", "customKey.txt"}));
+    }
+
+    @Test
+    public void testThreeArgumentsNegativeNumber() {
+        TopSecret cli = new TopSecret();
+        assertThrows(RuntimeException.class, () -> cli.run(new String[]{"-5", "customKey.txt", "tooMany"}));
+    }
 }
