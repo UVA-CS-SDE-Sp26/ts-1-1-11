@@ -4,6 +4,7 @@
 import java.lang.*;
 
 public class TopSecret {
+    ProgramControl pc = new ProgramControl();
 
     public static void main(String[] args) {
         TopSecret cli = new TopSecret();
@@ -42,7 +43,7 @@ public class TopSecret {
     }
 
     private void displayFileList() {
-        // this will call Team Member C's controller
+        pc.Start()
         System.out.println("01 filea.txt");
         System.out.println("02 fileb.txt");
         System.out.println("03 filec.txt");

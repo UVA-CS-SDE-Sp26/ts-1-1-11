@@ -15,7 +15,7 @@ public class ProgramControl {
     }
 
     // main program logic
-    public ArrayList<String> Start(String[] args) {
+    public void Main(String[] args) {
         if (args.length == 0) {
             return PrintFiles();
         }
@@ -32,14 +32,14 @@ public class ProgramControl {
     }
 
     // returns numbered list of available files
-    public ArrayList<String> PrintFiles() {
-        ArrayList<String> formattedList = new ArrayList<>();
+    public String PrintFiles() {
+        StringBuilder formattedList = new StringBuilder();
         for (int i = 0; i < availableFiles.size(); i++) {
             String formatted = String.format("%02d %s",
                     i + 1, availableFiles.get(i));
-            formattedList.add(formatted);
+            formattedList.append(formatted).append("\n");
         }
-        return formattedList;
+        return formattedList.toString();
     }
 
     // returns deciphered file contents
