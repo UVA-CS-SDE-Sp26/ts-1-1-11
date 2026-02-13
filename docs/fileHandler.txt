@@ -1,0 +1,13 @@
+Shorya Malani (B)
+2/11/26
+
+
+FileHandler 
+
+--------------- 
+
+FileHandler() - constructor -> check if the data folder exists, else throw exception 
+
+getAvailableFiles() -> ArrayList<String> -> returns all files in the Data Folder 
+
+getAvailableContent(String filename) -> ArrayList<String>-> if file is present, return the lines of it, else return None 
