@@ -20,20 +20,23 @@ public class FileHandler {
         return files;
     }
 
-    public ArrayList<String> getFileContent(String fileName){
+    public String getFileContent(String fileName){
         String pathToCheck = "data/" + fileName;
-        ArrayList<String> content = new ArrayList<>();
+        
         try {
             File file = new File(pathToCheck);
             Scanner s = new Scanner(file);
+            // read all into a string
+            StringBuilder content = new StringBuilder();
             while (s.hasNextLine()) {
-                content.add(s.nextLine());
+                content.append(s.nextLine()).append("\n");
             }
             s.close();
+            return content.toString();            
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        return content;
+        return null;
     }
 
 }

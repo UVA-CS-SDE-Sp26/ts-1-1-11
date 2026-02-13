@@ -43,7 +43,7 @@ public class ProgramControl {
     }
 
     // returns deciphered file contents
-    public ArrayList<String> PullFile(String fileId, String keyPath) {
+    public String PullFile(String fileId, String keyPath) {
         int index;
         try {
             index = Integer.parseInt(fileId);
@@ -55,8 +55,7 @@ public class ProgramControl {
         }
 
         String filename = availableFiles.get(index - 1);
-        ArrayList<String> content =
-                fileHandler.getAvailableFiles();
+        String content = fileHandler.getFileContent(filename);
 
         if (content == null) {
             throw new RuntimeException("Error: File not found.");
