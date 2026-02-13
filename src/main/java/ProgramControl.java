@@ -1,0 +1,82 @@
+
+import java.util.ArrayList;
+
+
+public class ProgramControl {
+
+    // commented out until parts are added
+    // private FileHandler fileHandler;
+    // private Cipher cipher;
+    private ArrayList<String> availableFiles;
+
+    // builds other objects
+    public ProgramControl() {
+         /*
+        availableFiles = fileHandler.getAvailableFiles();
+        if (availableFiles == null) {
+            availableFiles = new ArrayList<>();
+        }
+        */
+    }
+
+    // main program logic
+    public ArrayList<String> Start(String[] args) {
+        if (args.length == 0) {
+            return PrintFiles();
+        }
+        if (args.length == 1) {
+            return PullFile(args[0], null);
+        }
+        if (args.length == 2) {
+            return PullFile(args[0], args[1]);
+        }
+
+        throw new RuntimeException(
+                "Too many Arguments; format is java TopSecret [fileNumber] [Key]"
+        );
+    }
+
+    // returns numbered list of available files
+    public ArrayList<String> PrintFiles() {
+        ArrayList<String> formattedList = new ArrayList<>();
+        for (int i = 0; i < availableFiles.size(); i++) {
+            String formatted = String.format("%02d %s",
+                    i + 1, availableFiles.get(i));
+            formattedList.add(formatted);
+        }
+        return formattedList;
+    }
+
+    // returns deciphered file contents
+    public ArrayList<String> PullFile(String fileId, String keyPath) {
+        int index;
+        try {
+            index = Integer.parseInt(fileId);
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("Error: Invalid file number format.");
+        }
+        if (index < 1 || index > availableFiles.size()) {
+            throw new RuntimeException("Error: File number out of range.");
+        }
+
+        String filename = availableFiles.get(index - 1);
+        /*
+        ArrayList<String> content =
+                fileHandler.getAvailableContent(filename);
+
+        if (content == null) {
+            throw new RuntimeException("Error: File not found.");
+        }
+
+        if (cipher != null && keyPath != null) {
+            boolean loaded = cipher.loadKey(keyPath);
+            if (!loaded || !cipher.validateKey()) {
+                throw new RuntimeException("Error: Invalid cipher key.");
+            }
+            content = cipher.decipher(content);
+        }
+        return content;
+         */
+        return null;
+    }
+}
