@@ -20,7 +20,7 @@ public class TestTopSecret {
     public void testCustomKeyArgument() {
         TopSecret cli = new TopSecret();
         // verify two parameters
-        assertDoesNotThrow(() -> cli.run(new String[]{"01", "customKey.txt"}));
+        assertDoesNotThrow(() -> cli.run(new String[]{"01", "data/carnivore.cip"}));
     }
 
     @Test
