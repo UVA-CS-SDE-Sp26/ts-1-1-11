@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class FileHandler {
@@ -37,6 +38,22 @@ public class FileHandler {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public List<String> getKeyContents(String keyPath) {
+        try {
+            File file = new File(keyPath);
+            Scanner s = new Scanner(file);
+            // read all into a string
+            List<String> content = new ArrayList<>();
+            while (s.hasNextLine()) {
+                content.add(s.nextLine());
+            }
+            s.close();
+            return content;
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException("Failed to read key file");
+        }
     }
 
 }
