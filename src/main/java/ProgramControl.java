@@ -8,28 +8,14 @@ public class ProgramControl {
 
     // builds other objects
     public ProgramControl() {
+        fileHandler = new FileHandler();
         availableFiles = fileHandler.getAvailableFiles();
+        cipher = new CipherHandler("ciphers/key.txt");
         if (availableFiles == null) {
             availableFiles = new ArrayList<>();
         }
     }
 
-    // main program logic
-    public void Main(String[] args) {
-        if (args.length == 0) {
-            return PrintFiles();
-        }
-        if (args.length == 1) {
-            return PullFile(args[0], null);
-        }
-        if (args.length == 2) {
-            return PullFile(args[0], args[1]);
-        }
-
-        throw new RuntimeException(
-                "Too many Arguments; format is java TopSecret [fileNumber] [Key]"
-        );
-    }
 
     // returns numbered list of available files
     public String PrintFiles() {
@@ -60,9 +46,10 @@ public class ProgramControl {
         if (content == null) {
             throw new RuntimeException("Error: File not found.");
         }
-
-        if (cipher != null && keyPath != null) {
+        if (keyPath != null) {
             cipher.loadKey(keyPath);
+        }
+        if (cipher != null) {
             if (!cipher.validateKey()) {
                 throw new RuntimeException("Error: Invalid cipher key.");
             }
