@@ -61,8 +61,8 @@ public class CipherHandler {
 
         for (char c : text.toCharArray()) {
 
-            char lower = Character.toLowerCase(c);
-            int index = cipherChar.indexOf(lower);
+            //char lower = Character.toLowerCase(c);
+            int index = cipherChar.indexOf(c);
 
             if (index != -1) {
                 char decoded = realChar.charAt(index);

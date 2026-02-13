@@ -34,4 +34,54 @@ class CipherHandlerTest {
         assertEquals("abc\ndef", ch.decipher("bcd\nefg"));
     }
 
+    @Test
+    void decipherEmptyString() {
+        CipherHandler ch = new CipherHandler("ciphers/key.txt");
+
+        assertEquals("", ch.decipher(""));
+    }
+
+    @Test
+    void decipherSpacesOnly() {
+        CipherHandler ch = new CipherHandler("ciphers/key.txt");
+
+        assertEquals("   ", ch.decipher("   "));
+    }
+
+    @Test
+    void decipherSymbolsOnly() {
+        CipherHandler ch = new CipherHandler("ciphers/key.txt");
+
+        assertEquals("!@#$%^&*", ch.decipher("!@#$%^&*"));
+    }
+
+    @Test
+    void decipherBoundaryCharacters() {
+        CipherHandler ch = new CipherHandler("ciphers/key.txt");
+
+        assertEquals("a", ch.decipher("b"));
+        assertEquals("z", ch.decipher("a"));
+    }
+
+    @Test
+    void decipherFullAlphabet() {
+        CipherHandler ch = new CipherHandler("ciphers/key.txt");
+
+        assertEquals(
+                "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+                ch.decipher("bcdefghijklmnopqrstuvwxyzaBCDEFGHIJKLMNOPQRSTUVWXYZA2345678901")
+        );
+    }
+
+
+    @Test
+    void decipherCaseSensitivity() {
+        CipherHandler ch = new CipherHandler("ciphers/key.txt");
+
+        assertEquals("HELLO", ch.decipher("IFMMP"));
+        assertEquals("Hello", ch.decipher("Ifmmp"));
+        assertEquals("hELLo", ch.decipher("iFMMp"));
+    }
+
+
 }

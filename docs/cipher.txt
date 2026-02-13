@@ -1,0 +1,9 @@
+Abigail Daniel (D)
+02/11/2026
+Cipher
+---------
+realChar
+cipherChar
+loadKey(filename) ---> stores lines and returns true if storing is complete
+validateKey() ---> check if loaded correctly, return true if correct, else, return false
+decipher(text) ---> decipher text
