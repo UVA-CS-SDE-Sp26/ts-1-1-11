@@ -20,13 +20,13 @@ public class TestTopSecret {
     public void testCustomKeyArgument() {
         TopSecret cli = new TopSecret();
         // verify two parameters
-        assertDoesNotThrow(() -> cli.run(new String[]{"01", "data/carnivore.cip"}));
+        assertDoesNotThrow(() -> cli.run(new String[]{"01", "ciphers/key.txt"}));
     }
 
     @Test
     public void testThreeArguments() {
         TopSecret cli = new TopSecret();
-        assertThrows(RuntimeException.class, () -> cli.run(new String[]{"01", "customKey.txt", "tooMany"}));
+        assertThrows(RuntimeException.class, () -> cli.run(new String[]{"01", "ciphers/key.txt", "tooMany"}));
     }
 
     @Test
@@ -50,12 +50,12 @@ public class TestTopSecret {
     @Test
     public void testTwoArgumentsNegativeNumber() {
         TopSecret cli = new TopSecret();
-        assertThrows(RuntimeException.class, () -> cli.run(new String[]{"-5", "customKey.txt"}));
+        assertThrows(RuntimeException.class, () -> cli.run(new String[]{"-5", "ciphers/key.txt"}));
     }
 
     @Test
     public void testThreeArgumentsNegativeNumber() {
         TopSecret cli = new TopSecret();
-        assertThrows(RuntimeException.class, () -> cli.run(new String[]{"-5", "customKey.txt", "tooMany"}));
+        assertThrows(RuntimeException.class, () -> cli.run(new String[]{"-5", "ciphers/key.txt", "tooMany"}));
     }
 }
